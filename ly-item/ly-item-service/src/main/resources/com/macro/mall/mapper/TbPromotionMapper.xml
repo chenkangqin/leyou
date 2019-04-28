@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.TbPromotionMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.TbPromotion">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="condition" jdbcType="BIGINT" property="condition" />
+    <result column="reduction" jdbcType="BIGINT" property="reduction" />
+    <result column="seckill_price" jdbcType="BIGINT" property="seckillPrice" />
+    <result column="coupon_id" jdbcType="BIGINT" property="couponId" />
+    <result column="targets" jdbcType="VARCHAR" property="targets" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, type, description, condition, reduction, seckill_price, coupon_id, targets, start_time, 
+    end_time
+  </sql>
+  <select id="selectByExample" parameterType="com.macro.mall.model.TbPromotionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_promotion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_promotion
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_promotion
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.macro.mall.model.TbPromotionExample">
+    delete from tb_promotion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.TbPromotion">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tb_promotion (type, description, condition, 
+      reduction, seckill_price, coupon_id, 
+      targets, start_time, end_time
+      )
+    values (#{type,jdbcType=CHAR}, #{description,jdbcType=VARCHAR}, #{condition,jdbcType=BIGINT}, 
+      #{reduction,jdbcType=BIGINT}, #{seckillPrice,jdbcType=BIGINT}, #{couponId,jdbcType=BIGINT}, 
+      #{targets,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.TbPromotion">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tb_promotion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        type,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="condition != null">
+        condition,
+      </if>
+      <if test="reduction != null">
+        reduction,
+      </if>
+      <if test="seckillPrice != null">
+        seckill_price,
+      </if>
+      <if test="couponId != null">
+        coupon_id,
+      </if>
+      <if test="targets != null">
+        targets,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="condition != null">
+        #{condition,jdbcType=BIGINT},
+      </if>
+      <if test="reduction != null">
+        #{reduction,jdbcType=BIGINT},
+      </if>
+      <if test="seckillPrice != null">
+        #{seckillPrice,jdbcType=BIGINT},
+      </if>
+      <if test="couponId != null">
+        #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="targets != null">
+        #{targets,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.macro.mall.model.TbPromotionExample" resultType="java.lang.Integer">
+    select count(*) from tb_promotion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_promotion
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=CHAR},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.condition != null">
+        condition = #{record.condition,jdbcType=BIGINT},
+      </if>
+      <if test="record.reduction != null">
+        reduction = #{record.reduction,jdbcType=BIGINT},
+      </if>
+      <if test="record.seckillPrice != null">
+        seckill_price = #{record.seckillPrice,jdbcType=BIGINT},
+      </if>
+      <if test="record.couponId != null">
+        coupon_id = #{record.couponId,jdbcType=BIGINT},
+      </if>
+      <if test="record.targets != null">
+        targets = #{record.targets,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startTime != null">
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endTime != null">
+        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_promotion
+    set id = #{record.id,jdbcType=BIGINT},
+      type = #{record.type,jdbcType=CHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      condition = #{record.condition,jdbcType=BIGINT},
+      reduction = #{record.reduction,jdbcType=BIGINT},
+      seckill_price = #{record.seckillPrice,jdbcType=BIGINT},
+      coupon_id = #{record.couponId,jdbcType=BIGINT},
+      targets = #{record.targets,jdbcType=VARCHAR},
+      start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      end_time = #{record.endTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.TbPromotion">
+    update tb_promotion
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="condition != null">
+        condition = #{condition,jdbcType=BIGINT},
+      </if>
+      <if test="reduction != null">
+        reduction = #{reduction,jdbcType=BIGINT},
+      </if>
+      <if test="seckillPrice != null">
+        seckill_price = #{seckillPrice,jdbcType=BIGINT},
+      </if>
+      <if test="couponId != null">
+        coupon_id = #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="targets != null">
+        targets = #{targets,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.TbPromotion">
+    update tb_promotion
+    set type = #{type,jdbcType=CHAR},
+      description = #{description,jdbcType=VARCHAR},
+      condition = #{condition,jdbcType=BIGINT},
+      reduction = #{reduction,jdbcType=BIGINT},
+      seckill_price = #{seckillPrice,jdbcType=BIGINT},
+      coupon_id = #{couponId,jdbcType=BIGINT},
+      targets = #{targets,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
