@@ -28,4 +28,6 @@ public interface PmsBrandService {
     int updateShowStatus(List<Long> ids, Integer showStatus);
 
     int updateFactoryStatus(List<Long> ids, Integer factoryStatus);
+
+    List<PmsBrand> getMyBrand(int pageSize,int pageNum);
 }

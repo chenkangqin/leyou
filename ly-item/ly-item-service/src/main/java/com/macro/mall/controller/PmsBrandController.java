@@ -2,6 +2,7 @@ package com.macro.mall.controller;
 
 import com.macro.mall.dto.CommonResult;
 import com.macro.mall.dto.PmsBrandParam;
+import com.macro.mall.model.PmsBrand;
 import com.macro.mall.service.PmsBrandService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -125,5 +126,19 @@ public class PmsBrandController {
         } else {
             return new CommonResult().failed();
         }
+    }
+    @ApiOperation("我的品牌管理数据")
+    @RequestMapping("/mylist")
+    @ResponseBody
+    public Object getMyBrandList(@RequestParam("pageSize") int pageSize,@RequestParam("pageNum") int pageNum){
+        List<PmsBrand> list = brandService.getMyBrand(pageSize,pageNum);
+        return new CommonResult().pageSuccess(list);
+    }
+    @ApiOperation("更据id删除品牌数据")
+    @RequestMapping("/delete/{id}")
+    @ResponseBody
+    public Object deleteBrandByid(@PathVariable Long id){
+         int i = brandService.deleteBrand(id);
+        return new CommonResult().success(i);
     }
 }

@@ -107,4 +107,11 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         pmsBrandExample.createCriteria().andIdIn(ids);
         return brandMapper.updateByExampleSelective(pmsBrand, pmsBrandExample);
     }
+
+    @Override
+    public List<PmsBrand> getMyBrand(int pageSize,int pageNum) {
+        PageHelper.startPage(pageNum,pageSize);
+        PmsBrandExample e = new PmsBrandExample();
+        return brandMapper.selectByExample(e);
+    }
 }
