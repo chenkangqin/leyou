@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.UmsMemberTag;
 import com.macro.mall.model.UmsMemberTagExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UmsMemberTagMapper {
     int countByExample(UmsMemberTagExample example);

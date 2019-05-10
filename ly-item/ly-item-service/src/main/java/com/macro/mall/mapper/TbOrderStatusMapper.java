@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.TbOrderStatus;
 import com.macro.mall.model.TbOrderStatusExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbOrderStatusMapper {
     int countByExample(TbOrderStatusExample example);

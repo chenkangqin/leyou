@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.TbSpuDetail;
 import com.macro.mall.model.TbSpuDetailExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbSpuDetailMapper {
     int countByExample(TbSpuDetailExample example);

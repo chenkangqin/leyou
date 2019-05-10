@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.Cid3;
 import com.macro.mall.model.Cid3Example;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface Cid3Mapper {
     int countByExample(Cid3Example example);

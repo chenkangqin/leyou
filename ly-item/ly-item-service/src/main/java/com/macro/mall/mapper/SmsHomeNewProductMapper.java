@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.SmsHomeNewProduct;
 import com.macro.mall.model.SmsHomeNewProductExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface SmsHomeNewProductMapper {
     int countByExample(SmsHomeNewProductExample example);

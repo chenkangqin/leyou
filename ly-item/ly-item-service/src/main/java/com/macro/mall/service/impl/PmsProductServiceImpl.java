@@ -259,6 +259,11 @@ public class PmsProductServiceImpl implements PmsProductService {
         return productMapper.selectByExample(productExample);
     }
 
+    @Override
+    public PmsProduct getProductInfo(Long id) {
+        return productMapper.selectByPrimaryKey(id);
+    }
+
     /**
      * @deprecated 旧版创建
      */

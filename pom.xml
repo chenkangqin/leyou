@@ -13,6 +13,8 @@
         <module>ly-common</module>
         <module>ly-upload</module>
         <module>ly-mybatis-generator</module>
+        <module>ly-dubbo-proviser</module>
+        <module>ly-dubbo-consumer</module>
     </modules>
     <packaging>pom</packaging>
 

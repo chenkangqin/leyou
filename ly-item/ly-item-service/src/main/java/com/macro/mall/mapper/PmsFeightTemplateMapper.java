@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.PmsFeightTemplate;
 import com.macro.mall.model.PmsFeightTemplateExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface PmsFeightTemplateMapper {
     int countByExample(PmsFeightTemplateExample example);

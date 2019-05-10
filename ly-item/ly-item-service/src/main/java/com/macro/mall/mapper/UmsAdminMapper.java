@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.UmsAdmin;
 import com.macro.mall.model.UmsAdminExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UmsAdminMapper {
     int countByExample(UmsAdminExample example);

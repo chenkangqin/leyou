@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.PmsAlbum;
 import com.macro.mall.model.PmsAlbumExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface PmsAlbumMapper {
     int countByExample(PmsAlbumExample example);

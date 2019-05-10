@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.TbPromotion;
 import com.macro.mall.model.TbPromotionExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbPromotionMapper {
     int countByExample(TbPromotionExample example);

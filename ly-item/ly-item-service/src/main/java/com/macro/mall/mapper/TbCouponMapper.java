@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.TbCoupon;
 import com.macro.mall.model.TbCouponExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbCouponMapper {
     int countByExample(TbCouponExample example);

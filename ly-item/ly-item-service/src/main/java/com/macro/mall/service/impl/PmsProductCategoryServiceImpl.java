@@ -136,7 +136,7 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
 
     @Override
     public List<Map<String, Object>> testMySelect() {
-        return productCategoryMapper.testMySelect();
+        return null;
     }
 
     /**

@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.TbCategoryBrand;
 import com.macro.mall.model.TbCategoryBrandExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbCategoryBrandMapper {
     int countByExample(TbCategoryBrandExample example);

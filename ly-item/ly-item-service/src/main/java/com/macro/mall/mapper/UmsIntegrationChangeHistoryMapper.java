@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.UmsIntegrationChangeHistory;
 import com.macro.mall.model.UmsIntegrationChangeHistoryExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UmsIntegrationChangeHistoryMapper {
     int countByExample(UmsIntegrationChangeHistoryExample example);

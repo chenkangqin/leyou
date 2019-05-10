@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.OmsCompanyAddress;
 import com.macro.mall.model.OmsCompanyAddressExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface OmsCompanyAddressMapper {
     int countByExample(OmsCompanyAddressExample example);

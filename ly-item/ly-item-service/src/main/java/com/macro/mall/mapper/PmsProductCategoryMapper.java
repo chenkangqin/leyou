@@ -2,10 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.PmsProductCategory;
 import com.macro.mall.model.PmsProductCategoryExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
-import java.util.Map;
+import org.apache.ibatis.annotations.Param;
 
 public interface PmsProductCategoryMapper {
     int countByExample(PmsProductCategoryExample example);
@@ -35,6 +33,4 @@ public interface PmsProductCategoryMapper {
     int updateByPrimaryKeyWithBLOBs(PmsProductCategory record);
 
     int updateByPrimaryKey(PmsProductCategory record);
-
-    List<Map<String, Object>> testMySelect();
 }

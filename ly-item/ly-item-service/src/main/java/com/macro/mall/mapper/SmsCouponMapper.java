@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.SmsCoupon;
 import com.macro.mall.model.SmsCouponExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface SmsCouponMapper {
     int countByExample(SmsCouponExample example);

@@ -2,9 +2,8 @@ package com.macro.mall.mapper;
 
 import com.macro.mall.model.TbSpecification;
 import com.macro.mall.model.TbSpecificationExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbSpecificationMapper {
     int countByExample(TbSpecificationExample example);
