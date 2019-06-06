@@ -44,9 +44,9 @@ public class PmsProductController {
     @RequestMapping(value = "/productInfo/{id}", method = RequestMethod.GET)
     @ResponseBody
 
-    public Object getProductInfo(@PathVariable Long id) {
+    public PmsProduct getProductInfo(@PathVariable("id") Long id) {
         PmsProduct product = productService.getProductInfo(id);
-        return new CommonResult().success(product);
+        return product;
     }
     @ApiOperation("根据商品id获取商品编辑信息")
     @RequestMapping(value = "/updateInfo/{id}", method = RequestMethod.GET)
@@ -151,4 +151,13 @@ public class PmsProductController {
             return new CommonResult().failed();
         }
     }
+
+    @ApiOperation("获取所有的商品进行初始化e")
+    @RequestMapping(value = "/allList",method = RequestMethod.GET)
+    @ResponseBody
+    public List<PmsProduct> getAllProduct(){
+        List<PmsProduct> products =productService.getAllList();
+        return products;
+    }
+
 }

@@ -10,6 +10,7 @@ import com.macro.mall.model.*;
 import com.macro.mall.service.PmsProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -62,6 +63,8 @@ public class PmsProductServiceImpl implements PmsProductService {
     private PmsProductDao productDao;
     @Autowired
     private PmsProductVertifyRecordDao productVertifyRecordDao;
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
     @Override
     public int create(PmsProductParam productParam) {
@@ -73,7 +76,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         //根据促销类型设置价格：、阶梯价格、满减价格
         Long productId = product.getId();
         //会员价格
-        relateAndInsertList(memberPriceDao, productParam.getMemberPriceList(), productId);
+        /*relateAndInsertList(memberPriceDao, productParam.getMemberPriceList(), productId);
         //阶梯价格
         relateAndInsertList(productLadderDao, productParam.getProductLadderList(), productId);
         //满减价格
@@ -88,7 +91,14 @@ public class PmsProductServiceImpl implements PmsProductService {
         relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), productId);
         //关联优选
         relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
-        count = 1;
+        */count = 1;
+        try {
+            System.out.println("消息队列");
+            amqpTemplate.convertAndSend("item.insert",product.getId());
+
+        }catch (Exception e){
+            System.out.println("发送队列消息失败");
+        }
         return count;
     }
 
@@ -262,6 +272,11 @@ public class PmsProductServiceImpl implements PmsProductService {
     @Override
     public PmsProduct getProductInfo(Long id) {
         return productMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<PmsProduct> getAllList() {
+        return productMapper.selectByExample(new PmsProductExample());
     }
 
     /**

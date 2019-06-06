@@ -72,4 +72,6 @@ public interface PmsProductService {
     List<PmsProduct> list(String keyword);
 
     PmsProduct getProductInfo(Long id);
+
+    List<PmsProduct> getAllList();
 }
