@@ -34,6 +34,7 @@ zuul:
   routes:
     item-service : /item/** # 将商品微服务映射到/item/**
     search-service : /search/**
+    user-service : /user/**
 
 ribbon:
 

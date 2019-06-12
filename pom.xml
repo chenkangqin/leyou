@@ -15,7 +15,7 @@
         <module>ly-mybatis-generator</module>
         <module>ly-dubbo-proviser</module>
         <module>ly-dubbo-consumer</module>
-
+        <module>leyou-user</module>
 
 
     </modules>
