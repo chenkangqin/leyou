@@ -10,7 +10,7 @@ public class NideshopUser implements Serializable {
 
     private String password;
 
-    private Boolean gender;
+    private Integer gender;
 
     private Date birthday;
 
@@ -58,11 +58,11 @@ public class NideshopUser implements Serializable {
         this.password = password;
     }
 
-    public Boolean getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(Boolean gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 

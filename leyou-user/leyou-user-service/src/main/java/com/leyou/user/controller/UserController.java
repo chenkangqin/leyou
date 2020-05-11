@@ -1,5 +1,6 @@
 package com.leyou.user.controller;
 
+import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.leyou.user.pojo.NideshopUser;
@@ -73,6 +74,14 @@ public class UserController {
         object.put("data",resultMap);
         object.put("errno",0);
         return object;
+    }
+
+    @RequestMapping("addUser")
+    public Map<String,Object> addUser(@RequestBody NideshopUser user){
+        Map<String,Object> resultMap = new HashMap<>(10);
+        resultMap.put("code",200);
+        resultMap.put("desc","新增用户成功");
+        return resultMap;
     }
 
 }
